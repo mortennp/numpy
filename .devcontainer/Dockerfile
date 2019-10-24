@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM python:3
+FROM python:3.7
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -48,9 +48,9 @@ RUN apt-get update \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-# Install gfortran
+# Install gfortran and python3-devel
 RUN apt-get update \
-    && apt-get -y install gfortran
+    && apt-get -y install gfortran python3.7-dev
 
 # Install Cython
 RUN pip install cython pytest
